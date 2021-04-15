@@ -1,0 +1,33 @@
+{% extends "unique_note/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="appbar">
+<img src="{% static 'unique_note/img/sticky-note.png' %}" class="logo" />
+<p class="top-bar-text">Como o Post-it, mas só uma nota</p>
+</div>
+
+
+
+<main class="container">
+	<form class="form-card" method="post">
+		{% csrf_token %}
+		<input
+		  class="form-card-note"
+		  type="text"
+          for="note"
+		  name="note"
+		  placeholder="Insira sua notinha"
+		/>
+		<button class="btn" name="send-button" type="submit">Criar</button>
+	</form>
+
+<div class="card-container">
+    <div class="card">
+        <h3 class="card-note" >{{last_note}}</h3>
+    </div>
+</div>
+
+</main>
+{% endblock %}
